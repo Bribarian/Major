@@ -1,0 +1,45 @@
+#! //usr/local/Cellar/python3/3.4.1/Frameworks/Python.framework/Versions/3.4/bin/python3.4
+import pygame, sys
+
+pygame.time
+pygame.key
+pygame.init()
+pygame.mixer.init()
+pygame.key
+
+left = False
+size = width, height = 800, 500
+speed = [1, 1]
+black = 0, 0, 0
+lightblue = 0, 191, 255
+screen = pygame.display.set_mode(size)
+
+pygame.display.flip()
+
+f1=pygame.font.SysFont("comicsansms",24)
+basicfont = pygame.font.SysFont(None, 48)
+text = basicfont.render('Hello World!', True, (255, 0, 0), (255, 255, 255))
+textrect = text.get_rect()
+textrect.centerx = screen.get_rect().centerx
+textrect.centery = screen.get_rect().centery
+
+for event in pygame.event.get([pygame.KEYDOWN, pygame.KEYUP]):
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_LEFT:
+        	left = True 	
+	
+    if event.type == pygame.KEYUP:
+    	if event.key == pygame.K_LEFT:
+    		left = False
+if left == True:
+	screen.blit(text, textrect)
+pygame.display.update()
+            
+
+while 1:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT: sys.exit()
+        if event.type == pygame.KEYDOWN:
+        	if event.key == pygame.K_ESCAPE:
+        	    		pygame.quit()
+        	    		sys.exit()
